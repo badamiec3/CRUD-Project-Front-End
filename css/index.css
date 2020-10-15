@@ -1,0 +1,29 @@
+  
+.card {
+    width: 20%
+    
+}
+
+a {
+    cursor: pointer;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1; /* Firefox */
+  }
+
+input {
+    border:0;
+}
+
+#colourSlot {
+    border: 2px solid rgb(51, 30, 22);
+}
+
+#checkBoxDiv {
+    width: 300px;
+    border: 15px solid green;
+    padding: 50px;
+    margin: 20px;
+  }

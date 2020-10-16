@@ -1,6 +1,16 @@
 const createForm = document.getElementById("createForm");
 const bookOutput = document.getElementById("readDiv");
 
+//function checkBox() {
+  //  readCheckBox = document.getElementById(readInput);
+    //if(readCheckBox.checked) {
+      //  return readCheckBox.value = "true";
+
+    //} else return readCkeckBox.value = "false";
+//}
+
+
+
 createForm.addEventListener('submit', function (event) {
     event.preventDefault();
     console.log(this.title);
@@ -10,6 +20,7 @@ createForm.addEventListener('submit', function (event) {
         genre: this.genre.value,
         desc: this.desc.value,
         nowRead: this.read.value,
+        colour: this.colour.value,
     }
 
     fetch("http://localhost:8081/createBook", { 
@@ -51,19 +62,19 @@ function renderBook() {
                 title.value = book.title;
                 title.placeholder = "" + book.title;
                 title.innerText = book.title;
-               // title.style = "background-color: " + wood.colour;
+                title.style = "background-color: " + book.colour;
                 cardBody.appendChild(title);
 
                 const author = document.createElement("input");
                 const authorTitle = document.createElement("p");
                 authorTitle.innerText = "Author: ";
                 cardBody.appendChild(authorTitle);
-                author.value = book.author;
+                author.value = book.authorName;
                 author.id = "authorSlot";
                 author.name = "author";
                 author.className = "card-body";
-                author.placeholder = "" + book.author;
-               // author.style = "background-color: " + wood.colour;
+                author.placeholder = "" + book.authorName;
+                author.style = "background-color: " + book.colour;
                 cardBody.appendChild(author);
 
                 const genre = document.createElement("input");
@@ -75,7 +86,7 @@ function renderBook() {
                 genre.name = "genre";
                 genre.className = "card-body";
                 genre.placeholder = "" + book.genre;
-               // genre.style = "background-color: " + book.colour;
+                genre.style = "background-color: " + book.colour;
                 cardBody.appendChild(genre);
 
                 const desc = document.createElement("input");
@@ -87,7 +98,7 @@ function renderBook() {
                 desc.name = "desc";
                 desc.className = "card-body";
                 desc.placeholder = "" + book.desc;
-               // desc.style = "background-color: " + book.desc;
+                desc.style = "background-color: " + book.colour;
                 cardBody.appendChild(desc);
 
                 const read = document.createElement("input");
@@ -95,19 +106,39 @@ function renderBook() {
                 readTitle.innerText = "Read: ";
                 cardBody.appendChild(readTitle);
                 read.id = "softSlot";
-                read.value = book.read;
+                read.type="checkbox";
+                read.value = book.nowRead;
                 read.name = "read";
                 read.className = "card-body";
-                read.placeholder = "" + book.read;
-              //  read.style = "background-color: " + wood.colour;
+                read.placeholder = "" + book.nowRead;
+                read.style = "background-color: " + book.colour;
                 cardBody.appendChild(read);
+
+                const colour = document.createElement("input");
+                const colourTitle = document.createElement("p");
+                colourTitle.innerText = "Colour: ";
+                cardBody.appendChild(colourTitle);
+                colour.id = "colourSlot";
+                colour.value = book.colour;
+                colour.type = "color";
+                colour.name = "colour";
+                colour.className = "card-body";
+                colour.placeholder = "" + book.colour;
+                colour.style = "background-color: " + book.colour;
+                cardBody.appendChild(colour);
+
+                //const checkBox = document.createElement("input");
+                //checkBox.type = "checkbox";
+                //cardBody.appendChild(checkBox);
+                //checkBox.name = "readIt";
 
                 cardBody.appendChild(document.createElement("br"));
 
-               // card.style = "background-color: " +  wood.colour;
+                card.style = "background-color: " +  book.colour;
 
                 const deleteButton = document.createElement("a");
                 deleteButton.className = "card-link";
+                deleteButton.id = "buttonDel";
                 deleteButton.innerText = "Delete";
                 deleteButton.addEventListener("click", function () {
                     deleteBook(book.id);
@@ -130,9 +161,10 @@ function renderBook() {
                         genre: this.genre.value,
                         desc: this.desc.value,
                         nowRead: this.read.value,
+                        colour: this.colour.value,
                     }
                  
-                    fetch("http://localhost:8081/updateBook?id="+ book.id, { 
+                    fetch("http://localhost:8081/updateBook/?id="+ book.id, { 
                         method: "PUT",
                         body: JSON.stringify(data),
                         headers: {
@@ -145,7 +177,7 @@ function renderBook() {
                         console.log(data);
                     }).catch(error => console.log(error));
 
-                    location.reload();
+                  location.reload();
                  
                 });             
 

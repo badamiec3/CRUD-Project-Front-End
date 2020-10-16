@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Spring Wood</title>
+        <title>Footnote</title>
         <!-- CSS only -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
             integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -25,7 +25,7 @@
 
     <body>
         <h1>Footnote</h1>
-        <div id="createDiv">
+        <div id="createDiv"> 
             <h3>CREATE</h3>
             <form class="ml-3" id="createForm">
                 <div class="form-group">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-group">
                     <label for="genreInput">Genre:</label>
-                    <input id="genreInput" class="w-25 form-control" placeholder="Please enter the genre" name="genre" />
+                    <input id="genreInput" class="w-25 form-control" placeholder="Please enter a genre" name="genre" />
                 </div>
                 <div class="form-group">
                     <label for="descInput">Description: </label>
@@ -46,7 +46,11 @@
                 </div>
                 <div class="form-group">
                     <label for="readInput">Read:</label>
-                    <input class="w-25 form-control" id="readInput" placeholder="Has the book been read?" name="read" />
+                    <input type="checkbox" class="w-25 form-control" id="readInput" name="read" value="true">
+                </div>
+                <div class="form-group">
+                    <label for="colourInput">Please choose a note colour:</label>
+                    <input type="color" id="colourInput" class="w-25 form-control" name="colour" />
                 </div>
                 <button class="btn btn-primary" type="submit">Create</button>
             </form>

@@ -1,25 +1,16 @@
 const createForm = document.getElementById("createForm");
 const bookOutput = document.getElementById("readDiv");
 
-//function checkBox() {
-  //  readCheckBox = document.getElementById(readInput);
-    //if(readCheckBox.checked) {
-      //  return readCheckBox.value = "true";
-
-    //} else return readCkeckBox.value = "false";
-//}
-
-
-
 createForm.addEventListener('submit', function (event) {
     event.preventDefault();
     console.log(this.title);
+    console.log(this.desc);
     const data = {
         title: this.title.value,
         authorName: this.author.value,
         genre: this.genre.value,
         desc: this.desc.value,
-        nowRead: this.read.value,
+        nowRead: this.read.checked,
         colour: this.colour.value,
     }
 
@@ -97,7 +88,7 @@ function renderBook() {
                 desc.value = book.desc;
                 desc.name = "desc";
                 desc.className = "card-body";
-                desc.placeholder = "" + book.desc;
+                desc.placeholder = ""  + book.desc;
                 desc.style = "background-color: " + book.colour;
                 cardBody.appendChild(desc);
 
@@ -105,13 +96,11 @@ function renderBook() {
                 const readTitle = document.createElement("p");
                 readTitle.innerText = "Read: ";
                 cardBody.appendChild(readTitle);
-                read.id = "softSlot";
-                read.type="checkbox";
-                read.value = book.nowRead;
+                read.type = "checkbox"
+                read.id = "readSlot";
+                read.checked = book.nowRead;
                 read.name = "read";
                 read.className = "card-body";
-                read.placeholder = "" + book.nowRead;
-                read.style = "background-color: " + book.colour;
                 cardBody.appendChild(read);
 
                 const colour = document.createElement("input");
@@ -127,11 +116,7 @@ function renderBook() {
                 colour.style = "background-color: " + book.colour;
                 cardBody.appendChild(colour);
 
-                //const checkBox = document.createElement("input");
-                //checkBox.type = "checkbox";
-                //cardBody.appendChild(checkBox);
-                //checkBox.name = "readIt";
-
+                cardBody.appendChild(document.createElement("br"));
                 cardBody.appendChild(document.createElement("br"));
 
                 card.style = "background-color: " +  book.colour;
@@ -139,13 +124,17 @@ function renderBook() {
                 const deleteButton = document.createElement("a");
                 deleteButton.className = "card-link";
                 deleteButton.id = "buttonDel";
-                deleteButton.innerText = "Delete";
+                deleteButton.src = "url = ('https://b.kisscc0.com/20190405/ljw/kisscc0-rubbish-bins-waste-paper-baskets-recycling-bin-w-primary-trashcan-full-5ca7f9537ac661.4475366615545122115029.png')";
                 deleteButton.addEventListener("click", function () {
                     deleteBook(book.id);
                 })
+                
+                const deleteDiv = document.createElement("div");
+                deleteDiv.id = "deleteButtonDiv";
+                deleteButton.appendChild(deleteDiv);
                 cardBody.appendChild(deleteButton);
-
                 const updateButton = document.createElement("button");
+                updateButton.id = "updateButtonTwo";
                 updateButton.className = "card-link";
                 updateButton.innerText = "Update";
                 updateButton.type = "submit";
@@ -160,7 +149,7 @@ function renderBook() {
                         authorName: this.author.value,
                         genre: this.genre.value,
                         desc: this.desc.value,
-                        nowRead: this.read.value,
+                        nowRead: this.read.checked,
                         colour: this.colour.value,
                     }
                  
@@ -179,10 +168,7 @@ function renderBook() {
 
                   location.reload();
                  
-                });             
-
-            
-               
+                });               
             });
         }).catch(error => console.error(error));
 }

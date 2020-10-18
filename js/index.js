@@ -39,15 +39,19 @@ function renderBook() {
 
                 const card = document.createElement("form");
                 card.className = "card";
+                card.class = "card";
+                card.id = "bigCard";
                 card.method = "post";
                 bookOutput.appendChild(card);
 
                 const cardBody = document.createElement("div");
                 cardBody.className = "card-body";
+                cardBody.id = "bodyOfCard";
                 card.appendChild(cardBody);
 
                 const title = document.createElement("input");
                 title.id = "titleSlot";
+                title.class = "card-title";
                 title.name = "title";
                 title.className = "card-title";
                 title.value = book.title;
@@ -55,45 +59,50 @@ function renderBook() {
                 title.innerText = book.title;
                 title.style = "background-color: " + book.colour;
                 cardBody.appendChild(title);
+                cardBody.appendChild(document.createElement("br"));
 
                 const author = document.createElement("input");
                 const authorTitle = document.createElement("p");
+                authorTitle.style = "font-style: italic";
                 authorTitle.innerText = "Author: ";
                 cardBody.appendChild(authorTitle);
                 author.value = book.authorName;
                 author.id = "authorSlot";
                 author.name = "author";
                 author.className = "card-body";
-                author.placeholder = "" + book.authorName;
                 author.style = "background-color: " + book.colour;
                 cardBody.appendChild(author);
+                cardBody.appendChild(document.createElement("br"));
 
                 const genre = document.createElement("input");
                 const genreTitle = document.createElement("p");
+                genreTitle.style = "font-style: italic";
                 genreTitle.innerText = "Genre: ";
                 cardBody.appendChild(genreTitle);
                 genre.value = book.genre;
                 genre.id = "genreSlot";
                 genre.name = "genre";
                 genre.className = "card-body";
-                genre.placeholder = "" + book.genre;
                 genre.style = "background-color: " + book.colour;
                 cardBody.appendChild(genre);
+                cardBody.appendChild(document.createElement("br"));
 
                 const desc = document.createElement("input");
                 const descTitle = document.createElement("p");
+                descTitle.style = "font-style: italic";
                 descTitle.innerText = "Description: ";
                 cardBody.appendChild(descTitle);
                 desc.id = "descSlot";
                 desc.value = book.desc;
                 desc.name = "desc";
                 desc.className = "card-body";
-                desc.placeholder = ""  + book.desc;
                 desc.style = "background-color: " + book.colour;
                 cardBody.appendChild(desc);
+                cardBody.appendChild(document.createElement("br"));
 
                 const read = document.createElement("input");
                 const readTitle = document.createElement("p");
+                readTitle.style = "font-style: italic";
                 readTitle.innerText = "Read: ";
                 cardBody.appendChild(readTitle);
                 read.type = "checkbox"
@@ -103,8 +112,12 @@ function renderBook() {
                 read.className = "card-body";
                 cardBody.appendChild(read);
 
+                cardBody.appendChild(document.createElement("br"));
+
+
                 const colour = document.createElement("input");
                 const colourTitle = document.createElement("p");
+                colourTitle.style = "font-style: italic";
                 colourTitle.innerText = "Colour: ";
                 cardBody.appendChild(colourTitle);
                 colour.id = "colourSlot";
@@ -135,10 +148,10 @@ function renderBook() {
                 cardBody.appendChild(deleteButton);
                 const updateButton = document.createElement("button");
                 updateButton.id = "updateButtonTwo";
-                updateButton.className = "card-link";
+                updateButton.className = "btn btn-danger btn-lg";
                 updateButton.innerText = "Update";
                 updateButton.type = "submit";
-                card.appendChild(updateButton);
+                cardBody.appendChild(updateButton);
                 
 
                 card.addEventListener("submit", function(event) {
@@ -167,6 +180,7 @@ function renderBook() {
                     }).catch(error => console.log(error));
 
                   location.reload();
+                  bookOutput.appendChild(document.createElement("br"));
                  
                 });               
             });

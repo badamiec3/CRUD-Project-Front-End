@@ -20,10 +20,16 @@
     </head>
 
     <body>
-        <h1>FOOTNOTE</h1>
-        <div id="createDiv"> 
-            <h3>Create Book Notes </h3>
-            <form class="ml-3" id="createForm">
+        <div>
+        <div id="header"></div> 
+        <p>
+            <br/>
+            <br/>
+        </p>
+        <div id="createDiv">     
+            <form id="createForm">
+                <h1>Footnote</h1>
+            <div class="titleLine">
                 <div class="form-group">
                     <label for="titleInput">Title:</label>
                     <input class="w-25 form-control" id="titleInput" placeholder="Please enter the title" name="title" />
@@ -32,30 +38,66 @@
                     <label for="authorInput">Author:</label>
                     <input class="w-25 form-control" id="authorInput" placeholder="Please enter the author name"  name="author" />
                 </div>
-                <div class="form-group">
+            </div>
+            <div id="genreLine">
+                <div  class="form-group">
                     <label for="genreInput">Genre:</label>
-                    <input id="genreInput" class="w-25 form-control" placeholder="Please enter a genre" name="genre" />
+                    <input list="genres" id="genreInput" class="w-25 form-control" placeholder="Please enter a genre" name="genre" />
+                    <datalist id="genres">
+                        <option value="Action">
+                        <option value="Adventure">
+                        <option value="Children's">
+                        <option value="Classic">
+                        <option value="Comic Book">
+                        <option value="Crime"> 
+                        <option value="Dictionary">
+                        <option value="Drama">
+                        <option value="Encyclopedia">
+                        <option value="Fantasy">
+                        <option value="Fiction">
+                        <option value="Graphic Novel">
+                        <option value="Historical Fiction">
+                        <option value="Home and Garden">
+                        <option value="Horror">
+                        <option value="Mystery">
+                        <option value="Non-fiction">
+                        <option value="Poetry"> 
+                        <option value="Religion">
+                        <option value="Romance"> 
+                        <option value="Satire">
+                        <option value="Sci-Fi">
+                        <option value="Short Story">
+                        <option value="Sport and Leisure">
+                        <option value="Suspense">
+                        <option value="Thriller">
+                        <option value="Travel">
+                        <option value="True Crime">   
+                        <option value="Western">
+                        <option value="Young Adult">
+                      </datalist>
                 </div>
                 <div class="form-group">
                     <label for="descInput">Description:</label>
                     <input id="descInput" class="w-25 form-control" placeholder="Please enter a description" name="desc" />
                 </div>
+            </div>
+            <div id= "readLine">
                 <div class="form-group">
                     <label for="readInput">Read:</label>
                     <input type="checkbox" class="w-25 form-control" id="readInput" name="read" checked="true">
                 </div>
                 <div class="form-group">
                     <label for="colourInput">Please choose a note colour:</label>
-                    <input type="color" id="colourInput" class="w-25 form-control" name="colour" value = "#8a2bb6" />
+                    <input type="color" id="colourInput" class="card-body" name="colour" value = "#edcd2c" placeholder = "#edcd2c" />
                 </div>
-                <button class="btn btn-primary" type="submit">Create</button>
+                <button id="createButton" class="btn btn-danger btn-lg" type="submit">Create</button>
+                <p><br/></p>
+            </div>
             </form>
         </div>
+    </div>
         <div id="readDiv" class="card-deck m-5">
-
         </div>
-        <footer id="footer">
-        </footer>
         <script src="js/index.js"></script>
     </body>
 

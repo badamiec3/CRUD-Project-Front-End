@@ -6,11 +6,6 @@
   height: 20px;
 }
 
-
-#createButton {
-
-}
-
 #titleSlot {
   font-size: 30px;
   width: 100%;
@@ -119,7 +114,7 @@ a {
 
 #authorInput {
 height: 50px;
-  width: 300px;
+  width: 400px;
 }
 
 #colourInput {
@@ -129,6 +124,11 @@ height: 50px;
 
 
 #genreInput  {
+  height: 50px;
+  width: 300px;
+}
+
+#descInput {
   height: 50px;
   width: 300px;
 }
@@ -146,12 +146,12 @@ input {
 
 #titleSlot {
   height: 50px;
-  width: 300px;
+  width: 100%;
 }
 
 #genreSlot {
   height: 50px;
-  width: 300px;
+  width: 100%;
   font-size: 20px;
 }
 
